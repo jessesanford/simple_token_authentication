@@ -1,8 +1,8 @@
 module SimpleTokenAuthentication
   class Entity
-    def initialize model
+    def initialize model, name=nil
       @model = model
-      @name = model.name
+      @name = name || model.name
     end
 
     def model

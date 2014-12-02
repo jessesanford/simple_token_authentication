@@ -92,7 +92,8 @@ module SimpleTokenAuthentication
       #
       # Returns nothing.
       def handle_token_authentication_for(model, options = {})
-        entity = entities_manager.find_or_create_entity(model)
+        name = options[:name] || model.name
+        entity = entities_manager.find_or_create_entity(model, name)
         options = SimpleTokenAuthentication.parse_options(options)
         define_token_authentication_helpers_for(entity, fallback_authentication_handler)
         set_token_authentication_hooks(entity, options)
